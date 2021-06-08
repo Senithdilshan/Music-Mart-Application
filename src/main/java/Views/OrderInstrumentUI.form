@@ -135,14 +135,14 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\vialine.jpg"/>
+              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/vialine.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\guitar1.jpg"/>
+              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/guitar1.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -152,14 +152,14 @@
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\pianoo.jpg"/>
+              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/pianoo.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\drum.jpg"/>
+              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/drum.jpg"/>
             </Property>
           </Properties>
         </Component>

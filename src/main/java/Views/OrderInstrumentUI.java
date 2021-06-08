@@ -62,18 +62,18 @@ public class OrderInstrumentUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music_Mart\\UIPic\\vialine.jpg")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/vialine.jpg")); // NOI18N
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music_Mart\\UIPic\\guitar1.jpg")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/guitar1.jpg")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music_Mart\\UIPic\\pianoo.jpg")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/pianoo.jpg")); // NOI18N
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music_Mart\\UIPic\\drum.jpg")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/drum.jpg")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
