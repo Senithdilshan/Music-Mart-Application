@@ -25,5 +25,10 @@ public class OrderInstrument extends MusicMart {
         float InsTotal = InsQuantity * InsPrice;
         return InsTotal;
     }
+
+    @Override
+    public String getForm() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

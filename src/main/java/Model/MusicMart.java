@@ -1,6 +1,6 @@
 package Model;
 
-public  class MusicMart {
+public  abstract class MusicMart {
 
     private String AdminName ;
     private String AdminPassword ;
@@ -16,6 +16,8 @@ public  class MusicMart {
     }
 
     public class CustomerAccount {
+
+       
 
         private int CusID;
         private String CusName;
@@ -39,6 +41,19 @@ public  class MusicMart {
             this.CusMobile = null;
 
         }
+         
+    }
+    public void CusAcc(int CusID, String CusName, String CusPassword, String CusEmail, String CusMobile)
+    {
+        CustomerAccount Cus=new CustomerAccount(CusID,CusName,CusPassword,CusEmail,CusMobile);
+    }
+    
+    
+    public abstract String getForm();
+    
+    public String getAdmin()
+    {
+        return AdminName+AdminPassword;
     }
 
     public class RepairistAcc {
