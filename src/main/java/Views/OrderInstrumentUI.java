@@ -5,6 +5,7 @@
  */
 package Views;
 import Model.OrderInstrument;
+import javax.swing.JButton;
 /**
  *
  * @author SENITH
@@ -17,6 +18,7 @@ public class OrderInstrumentUI extends javax.swing.JFrame {
     public OrderInstrumentUI() {
         initComponents();
     }
+    public static float price;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,12 +153,19 @@ public class OrderInstrumentUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        OrderInstrument o=new OrderInstrument(1,null,50.0f,0);
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
+       price = o.InsPrice;
+       BuyUI B=new BuyUI();
+       B.setVisible(true);
+       
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+
+
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        OrderInstrument o=new OrderInstrument(1,null,60.0f,0);
+       price = o.InsPrice;
         BuyUI B=new BuyUI();
         B.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
