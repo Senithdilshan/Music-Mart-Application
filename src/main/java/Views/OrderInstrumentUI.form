@@ -127,7 +127,7 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\ProjectPic\Edit\guitar1.jpg"/>
+              <Image iconType="3" name="/Views/guitar1.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -137,21 +137,21 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\ProjectPic\Edit\vialine.jpg"/>
+              <Image iconType="3" name="/Views/vialine.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\ProjectPic\Edit\drum.jpg"/>
+              <Image iconType="3" name="/Views/drum.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\ProjectPic\Edit\pianoo.jpg"/>
+              <Image iconType="3" name="/Views/pianoo.jpg"/>
             </Property>
           </Properties>
         </Component>
