@@ -94,18 +94,19 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jButton8" min="-2" pref="232" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="jButton9" min="-2" pref="232" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="jButton10" min="-2" pref="232" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jButton7" min="-2" pref="232" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="jButton5" min="-2" pref="232" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="232" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jButton6" alignment="1" min="-2" pref="232" max="-2" attributes="0"/>
+                      <Component id="jButton10" alignment="1" min="-2" pref="232" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
@@ -135,7 +136,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/Accessories/drumstick.jpg"/>
+              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\Accessories\drumstick.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -145,7 +146,7 @@
         <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/Accessories/gittar pick.jpg"/>
+              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\Accessories\gittar pick.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -155,7 +156,7 @@
         <Component class="javax.swing.JButton" name="jButton7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/Accessories/dchair.jpg"/>
+              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\Accessories\dchair.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -165,7 +166,7 @@
         <Component class="javax.swing.JButton" name="jButton8">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/Accessories/Giture Strings.jpg"/>
+              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\Accessories\Giture Strings.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -175,7 +176,7 @@
         <Component class="javax.swing.JButton" name="jButton9">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/Accessories/piano chair.jpg"/>
+              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\Accessories\piano chair.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -185,7 +186,7 @@
         <Component class="javax.swing.JButton" name="jButton10">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/lakshansandanayaka/Documents/OOP final project/Music-Mart-Application/UIPic/Accessories/violin string.jpg"/>
+              <Image iconType="2" name="C:\Users\94716\Desktop\JAVA LAB\OOPLab\Music_Mart\UIPic\Accessories\violin string.jpg"/>
             </Property>
           </Properties>
           <Events>
