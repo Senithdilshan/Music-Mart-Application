@@ -26,9 +26,9 @@ public class OrderInstrument extends MusicMart {
         return InsTotal;
     }
 
-    @Override
-    public String getForm() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public String getForm() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

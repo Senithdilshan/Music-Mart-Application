@@ -6,18 +6,23 @@
 package Views;
 
 import Model.MusicMart;
-import Model.UserReg;
+//import Model.UserReg;
 import javax.swing.JOptionPane;
+import ServiceLayer.CustomerService;
 
 /**
  *
  * @author SENITH
  */
 public class CusRegUI extends javax.swing.JFrame {
+    CustomerService cusService;
 
 
     public CusRegUI() {
+        int a=(int)(100*Math.random());
+        
         initComponents();
+        cusService= new CustomerService();
     }
 
     /**
@@ -73,14 +78,6 @@ public class CusRegUI extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Mobile ");
 
-        CusIDtxt.setBackground(new java.awt.Color(153, 153, 153));
-
-        CusNametxt.setBackground(new java.awt.Color(153, 153, 153));
-
-        CusEmailtxt.setBackground(new java.awt.Color(153, 153, 153));
-
-        CusMobiletxt.setBackground(new java.awt.Color(153, 153, 153));
-
         jButton1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,9 +100,6 @@ public class CusRegUI extends javax.swing.JFrame {
             }
         });
 
-        Cusp1txt.setBackground(new java.awt.Color(153, 153, 153));
-
-        Cusp2txt.setBackground(new java.awt.Color(153, 153, 153));
         Cusp2txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Cusp2txtActionPerformed(evt);
@@ -116,8 +110,7 @@ public class CusRegUI extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Confirm Password");
 
-        txtShow.setBackground(new java.awt.Color(204, 204, 204));
-        txtShow.setForeground(new java.awt.Color(255, 255, 255));
+        txtShow.setBackground(new java.awt.Color(255, 255, 255));
         txtShow.setText("Show Password");
         txtShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +196,7 @@ public class CusRegUI extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,24 +238,44 @@ public class CusRegUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
         String IdS = CusIDtxt.getText();
         int ID = Integer.parseInt(IdS);
         String Name = CusNametxt.getText();
         String P1 = Cusp1txt.getText();
         String P2 = Cusp2txt.getText();
         String Cpassword = null;
-        if (P1.equals(P2)) {
+        if(P1.length()==5 && P2.length()==5)
+        {
+            if (P1.equals(P2)) {
             Cpassword = P1;
             String Email = CusEmailtxt.getText();
             String Mobile = CusMobiletxt.getText();
+            MusicMart.CustomerAccount c1= (new MusicMart()).new CustomerAccount(ID, Name, Cpassword, Email, Mobile);
+            boolean status = cusService.AddCustomer(c1);
+            if (status) {
+                JOptionPane.showMessageDialog(rootPane, "Sucessfully Registerd", "Sucess", 1);
+                LoginUI c = new LoginUI();
+                c.setVisible(true);
 
-            UserReg u1 = new UserReg("Admin", "Password");
-            u1.CusAcc(ID, Name, Cpassword, Email, Mobile);
-            JOptionPane.showMessageDialog(rootPane, "Sucessfully Registerd", "Sucess", 1);
-            LoginUI c = new LoginUI();
-            c.setVisible(true);
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Customer ID is Already Exit. Try Again", "Faild", 0);
+            }
+
+//            UserReg u1 = new UserReg("Admin", "Password");
+//            u1.CusAcc(ID, Name, Cpassword, Email, Mobile);
+            
+            
         } else {
             JOptionPane.showMessageDialog(rootPane, "Password does not match", "Error", 0);
+        }
+        }else 
+        {
+            JOptionPane.showMessageDialog(rootPane, "Password should be 5 Characters", "Error", 0);
+        }
+        }catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Please Check your inputs ", "Error", 0);
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed

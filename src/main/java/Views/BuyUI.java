@@ -58,7 +58,7 @@ public class BuyUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,14 +95,12 @@ public class BuyUI extends javax.swing.JFrame {
         pricetxt2.setForeground(new java.awt.Color(255, 255, 255));
         pricetxt2.setText("Quantity");
 
-        txtQuantity.setBackground(new java.awt.Color(153, 153, 153));
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtQuantityActionPerformed(evt);
             }
         });
 
-        txtTotal.setBackground(new java.awt.Color(153, 153, 153));
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalActionPerformed(evt);
@@ -118,7 +116,6 @@ public class BuyUI extends javax.swing.JFrame {
 
         jButton2.setText("Buy");
 
-        txtPrice.setBackground(new java.awt.Color(153, 153, 153));
         txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPriceActionPerformed(evt);
@@ -133,8 +130,8 @@ public class BuyUI extends javax.swing.JFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,6 +265,7 @@ public class BuyUI extends javax.swing.JFrame {
         if (OrderInstrumentUI.InsVal == true) {
             OrderInstrumentUI c= new OrderInstrumentUI();
             c.setVisible(true);
+            
         } else {
             OrderAccessoriesUI c= new OrderAccessoriesUI();
             c.setVisible(true);
