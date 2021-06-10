@@ -19,6 +19,8 @@ public class LoginUI extends javax.swing.JFrame {
     public LoginUI() {
         initComponents();
     }
+    
+    public static String idn;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +58,7 @@ public class LoginUI extends javax.swing.JFrame {
         jPanel1.setAlignmentY(0.0F);
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music_Mart\\UIPic\\logo2.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music-Mart-Application\\UIPic\\logo2.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -233,6 +235,7 @@ public class LoginUI extends javax.swing.JFrame {
         if (itemSelect.equals("Customer")) {
             String pass = TxtPassword.getText();
             String id = txtUserID.getText();
+            idn=id;
             try {
                 Connection con = null;
                 Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -242,7 +245,7 @@ public class LoginUI extends javax.swing.JFrame {
 
                 PreparedStatement pst = con.prepareStatement(query);
                 ResultSet rs = pst.executeQuery();
-                if (rs.next()) {
+                if (rs.next()) { 
                     String psw = rs.getString("CusPassword");
                     if (psw.equals(pass)) {
                         this.dispose();

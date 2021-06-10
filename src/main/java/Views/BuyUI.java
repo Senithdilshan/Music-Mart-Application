@@ -7,6 +7,12 @@ package Views;
 
 import Model.OrderInstrument;
 import Model.OrderAccessories;
+import Model.SendEmail;
+import DatabaseLayer.CustomerDatabaseConnection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
+
 
 /**
  *
@@ -19,6 +25,8 @@ public class BuyUI extends javax.swing.JFrame {
      */
     float val = OrderInstrumentUI.Iprice;
     float val1 = OrderAccessoriesUI.Aprice;
+    String idx = LoginUI.idn;
+    
 
     public BuyUI() {
         initComponents();
@@ -29,8 +37,11 @@ public class BuyUI extends javax.swing.JFrame {
             String a1 = String.valueOf(val1);
             txtPrice.setText(a1);
         }
+        
+        
 
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,6 +126,11 @@ public class BuyUI extends javax.swing.JFrame {
         });
 
         jButton2.setText("Buy");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,19 +279,39 @@ public class BuyUI extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (OrderInstrumentUI.InsVal == true) {
-            OrderInstrumentUI c= new OrderInstrumentUI();
+            OrderInstrumentUI c = new OrderInstrumentUI();
             c.setVisible(true);
-            
+
         } else {
-            OrderAccessoriesUI c= new OrderAccessoriesUI();
+            OrderAccessoriesUI c = new OrderAccessoriesUI();
             c.setVisible(true);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        LoginUI c= new LoginUI();
+        LoginUI c = new LoginUI();
         c.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+
+            String query = "select CusEmail from customerdetails where CusID='" + idx + "'";
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                String Cid = rs.getString("CusEmail");
+                SendEmail.SendEmail(Cid);
+            }
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
