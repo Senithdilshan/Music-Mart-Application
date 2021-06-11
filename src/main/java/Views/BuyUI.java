@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 
-
 /**
  *
  * @author SENITH
@@ -25,8 +24,9 @@ public class BuyUI extends javax.swing.JFrame {
      */
     float val = OrderInstrumentUI.Iprice;
     float val1 = OrderAccessoriesUI.Aprice;
+    int Insidval = OrderInstrumentUI.Insid;
+    int Accidval = OrderAccessoriesUI.Accid;
     String idx = LoginUI.idn;
-    
 
     public BuyUI() {
         initComponents();
@@ -37,11 +37,8 @@ public class BuyUI extends javax.swing.JFrame {
             String a1 = String.valueOf(val1);
             txtPrice.setText(a1);
         }
-        
-        
 
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -294,17 +291,48 @@ public class BuyUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+
         try {
+
             Connection con = null;
             Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
 
-            String query = "select CusEmail from customerdetails where CusID='" + idx + "'";
+            if (OrderInstrumentUI.InsVal == true) {
 
+                String QS = txtQuantity.getText();
+                String TS = txtTotal.getText();
+                float Tot = Float.parseFloat(TS);
+                int Qua = Integer.parseInt(QS);
+
+                String query1 = "update instrument set InsQuantity =InsQuantity-" + Qua + " where InsID=" + Insidval + "";
+                PreparedStatement p1 = con.prepareStatement(query1);
+                p1.execute();
+
+                String query2 = "insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ");";
+                PreparedStatement p2 = con.prepareStatement(query2);
+                p2.executeUpdate();
+            } else {
+
+                String QS = txtQuantity.getText();
+                String TS = txtTotal.getText();
+                float Tot = Float.parseFloat(TS);
+                int Qua = Integer.parseInt(QS);
+
+                String query1 = "update accessories set AccQuantity =AccQuantity-" + Qua + " where InsID=" + Accidval + "";
+                PreparedStatement p1 = con.prepareStatement(query1);
+                p1.execute();
+
+                String query2 = "insert into asspurchase values(" + idx + "," + Accidval + "," + Qua + "," + Tot + ");";
+                PreparedStatement p2 = con.prepareStatement(query2);
+                p2.executeUpdate();
+
+            }
+
+            String query = "select CusEmail from customerdetails where CusID=" + idx + "";
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 String Cid = rs.getString("CusEmail");
                 SendEmail.SendEmail(Cid);
             }

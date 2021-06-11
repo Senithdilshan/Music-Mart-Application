@@ -1,6 +1,7 @@
 package ServiceLayer;
 import DatabaseLayer.CustomerDatabaseConnection;
 import Model.MusicMart.CustomerAccount;
+
 public class CustomerService {
     private CustomerDatabaseConnection instance;
     public CustomerService()
@@ -12,6 +13,8 @@ public class CustomerService {
         boolean status=instance.ExecuteSQLQuery("insert into customerdetails values("+c.CusID+",'"+c.CusName+"','"+c.CusPassword+"','"+c.CusEmail+"','"+c.CusMobile+"');");
         return status;
     }
+    
+
     
 //    public String getCustomer(int id)
 //    {

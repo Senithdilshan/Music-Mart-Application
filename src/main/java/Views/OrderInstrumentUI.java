@@ -5,7 +5,11 @@
  */
 package Views;
 
+
 import Model.OrderInstrument;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
 import javax.swing.JButton;
 
 /**
@@ -20,6 +24,7 @@ public class OrderInstrumentUI extends javax.swing.JFrame {
     public OrderInstrumentUI() {
         initComponents();
     }
+    public static int Insid;
     public static float Iprice;
     public static boolean InsVal;
 
@@ -169,43 +174,120 @@ public class OrderInstrumentUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        OrderInstrument o = new OrderInstrument(1, null,50.0f,0);
-        Iprice = o.InsPrice;
-        InsVal=true;
-        BuyUI B = new BuyUI();
-        B.setVisible(true);
+
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+
+            String query = "select * from instrument where InsID = 1";
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+//                int Cid = rs.getInt("InsID");
+//                String Cname = rs.getString("InsName");
+                float Cprice = rs.getFloat("InsPrice");
+//                int Cquan = rs.getInt("CusEmail");
+                OrderInstrument o = new OrderInstrument(1, null, Cprice, 0);
+                Insid=o.InsID;
+                Iprice =o.InsPrice;
+                InsVal = true;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        OrderInstrument o = new OrderInstrument(1, null, 60.0f, 0);
-        Iprice = o.InsPrice;
-        InsVal=true;
-        BuyUI B = new BuyUI();
-        B.setVisible(true);
+       try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+
+            String query = "select * from instrument where InsID = 2";
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+//                int Cid = rs.getInt("InsID");
+//                String Cname = rs.getString("InsName");
+                float Cprice = rs.getFloat("InsPrice");
+//                int Cquan = rs.getInt("CusEmail");
+                OrderInstrument o = new OrderInstrument(2, null, Cprice, 0);
+                Insid=o.InsID;
+                Iprice = o.InsPrice;
+                InsVal = true;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        OrderInstrument o = new OrderInstrument(1, null, 70.0f, 0);
-        Iprice = o.InsPrice;
-        InsVal=true;
-        BuyUI B = new BuyUI();
-        B.setVisible(true);
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+
+            String query = "select * from instrument where InsID = 3";
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+//                int Cid = rs.getInt("InsID");
+//                String Cname = rs.getString("InsName");
+                float Cprice = rs.getFloat("InsPrice");
+//                int Cquan = rs.getInt("CusEmail");
+                OrderInstrument o = new OrderInstrument(3, null, Cprice, 0);
+                Insid=o.InsID;
+                Iprice = o.InsPrice;
+                InsVal = true;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        OrderInstrument o = new OrderInstrument(1, null, 80.0f, 0);
-        Iprice = o.InsPrice;
-        InsVal=true;
-        BuyUI B = new BuyUI();
-        B.setVisible(true);
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+
+            String query = "select * from instrument where InsID = 4";
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+//                int Cid = rs.getInt("InsID");
+//                String Cname = rs.getString("InsName");
+                float Cprice = rs.getFloat("InsPrice");
+//                int Cquan = rs.getInt("CusEmail");
+                OrderInstrument o = new OrderInstrument(4, null, Cprice, 0);
+                Insid=o.InsID;
+                Iprice = o.InsPrice;
+                InsVal = true;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        OrderInstrumentUI.InsVal=false;
-        MenuUI m= new MenuUI();
+        OrderInstrumentUI.InsVal = false;
+        MenuUI m = new MenuUI();
         m.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 

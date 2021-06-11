@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package Views;
+
 import Model.OrderAccessories;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
 
 /**
  *
@@ -18,7 +22,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
     public OrderAccessoriesUI() {
         initComponents();
     }
-    
+    public static int Accid;
     public static float Aprice;
 
     /**
@@ -181,57 +185,134 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-        OrderAccessories A=new OrderAccessories(002,"Drumset Stick",2000.00f,0);
-        Aprice=A.AccPrice;
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select * from accessories where AccID = 2";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float Cprice = rs.getFloat("AccPrice");
+                OrderAccessories A = new OrderAccessories(002, null, Cprice, 0);
+                Aprice = A.AccPrice;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
-        OrderAccessories A=new OrderAccessories(003,"Guitar Pick",500.00f,0);
-        Aprice=A.AccPrice;
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
-        
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select * from accessories where AccID = 3";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float Cprice = rs.getFloat("AccPrice");
+                OrderAccessories A = new OrderAccessories(003, null, Cprice, 0);
+                Aprice = A.AccPrice;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
-        OrderAccessories A=new OrderAccessories(001,"Drumset Chair",10000.00f,0);
-        Aprice=A.AccPrice;
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
-        
+
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select * from accessories where AccID = 1";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float Cprice = rs.getFloat("AccPrice");
+                OrderAccessories A = new OrderAccessories(001, null, Cprice, 0);
+                Aprice = A.AccPrice;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
-        OrderAccessories A=new OrderAccessories(004,"Guitar Strings",1000.00f,0);
-        Aprice=A.AccPrice;
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select * from accessories where AccID = 4";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float Cprice = rs.getFloat("AccPrice");
+                OrderAccessories A = new OrderAccessories(004, null, Cprice, 0);
+                Aprice = A.AccPrice;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
-        OrderAccessories A=new OrderAccessories(005,"Piano Chari",25000.00f,0);
-        Aprice=A.AccPrice;
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select * from accessories where AccID = 5";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float Cprice = rs.getFloat("AccPrice");
+                OrderAccessories A = new OrderAccessories(005, null, Cprice, 0);
+                Aprice = A.AccPrice;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        
-        OrderAccessories A=new OrderAccessories(006,"Viloan Strings",1500.00f,0);
-        Aprice=A.AccPrice;
-        BuyUI B=new BuyUI();
-        B.setVisible(true);
+
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select * from accessories where AccID = 6";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float Cprice = rs.getFloat("AccPrice");
+                OrderAccessories A = new OrderAccessories(006, null, Cprice, 0);
+                Aprice = A.AccPrice;
+                BuyUI B = new BuyUI();
+                B.setVisible(true);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MenuUI m= new MenuUI();
+        MenuUI m = new MenuUI();
         m.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
