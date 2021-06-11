@@ -58,7 +58,7 @@ public class LoginUI extends javax.swing.JFrame {
         jPanel1.setAlignmentY(0.0F);
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nimshi Sulakshana\\java applications\\Music-Mart-Application\\UIPic\\logo2.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music-Mart-Application\\UIPic\\logo2.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -265,11 +265,39 @@ public class LoginUI extends javax.swing.JFrame {
             String id = txtUserID.getText();
             if (id.equals("Admin") && pass.equals("Password")) {
                 JOptionPane.showMessageDialog(rootPane, "Login Sucessfully", "Sucess", 1);
-                MenuUI c = new MenuUI();
+                AdminMenuUI c = new AdminMenuUI();
                 c.setVisible(true);
             }else 
             {
                 JOptionPane.showMessageDialog(rootPane, "User ID or Password incorrect ", "Faild", 0);
+            }
+        }else if (itemSelect.equals("Rapairist")) {
+            String pass = TxtPassword.getText();
+            String id = txtUserID.getText();
+            idn=id;
+            try {
+                Connection con = null;
+                Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+
+                String query = "select RepID,PASSWORD from repairist where RepID='" + id + "'";
+
+                PreparedStatement pst = con.prepareStatement(query);
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) { 
+                    String psw = rs.getString("PASSWORD");
+                    if (psw.equals(pass)) {
+                        this.dispose();
+                        JOptionPane.showMessageDialog(rootPane, "Login Sucessfully", "Sucess", 1);
+                        JobListUI c = new JobListUI();
+                        c.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "User ID or Password incorrect ", "Faild", 0);
+                    }
+                }
+
+            } catch (Exception e) {
+
             }
         }
 

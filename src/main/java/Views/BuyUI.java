@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import java.util.Date;
 
 /**
  *
@@ -299,7 +300,8 @@ public class BuyUI extends javax.swing.JFrame {
             Connection con = null;
             Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
-            
+            Date date = new Date();
+            java.sql.Date sqldate = new java.sql.Date(date.getTime());
             if (OrderInstrumentUI.InsVal == true) {
 
                 String QS = txtQuantity.getText();
@@ -311,8 +313,7 @@ public class BuyUI extends javax.swing.JFrame {
                 PreparedStatement p1 = con.prepareStatement(query1);
                 p1.execute();
 
-//                String query2 = "insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ");";
-                PreparedStatement p2 = con.prepareStatement("insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ");");
+                PreparedStatement p2 = con.prepareStatement("insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ",'" + sqldate + "');");
                 p2.execute();
             } else {
 
@@ -325,7 +326,7 @@ public class BuyUI extends javax.swing.JFrame {
                 PreparedStatement p5 = con.prepareStatement(query5);
                 p5.execute();
 
-                String query2 = "insert into asspurchase values(" + idx + "," + Accidval + "," + QuaA + "," + TotA + ");";
+                String query2 = "insert into asspurchase values(" + idx + "," + Accidval + "," + QuaA + "," + TotA + ",'" + sqldate+ "');";
                 PreparedStatement p2 = con.prepareStatement(query2);
                 p2.execute();
 
