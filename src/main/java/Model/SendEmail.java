@@ -42,7 +42,7 @@ public class SendEmail {
             message.setFrom(new InternetAddress(myAccountEmail));//ur email
             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recepient));//u will send to
             message.setSubject("Order Details");
-            message.setText("Dear Customer,\nYour order is Successful.\nThank You");
+            message.setText("Dear Customer,\nYour order is Successful.\nThank You.");
             return message;
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);

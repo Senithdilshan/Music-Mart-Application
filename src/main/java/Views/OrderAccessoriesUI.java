@@ -196,6 +196,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
                 float Cprice = rs.getFloat("AccPrice");
                 OrderAccessories A = new OrderAccessories(002, null, Cprice, 0);
                 Aprice = A.AccPrice;
+                Accid=A.AccID;
                 BuyUI B = new BuyUI();
                 B.setVisible(true);
             }
@@ -217,6 +218,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
                 float Cprice = rs.getFloat("AccPrice");
                 OrderAccessories A = new OrderAccessories(003, null, Cprice, 0);
                 Aprice = A.AccPrice;
+                Accid=A.AccID;
                 BuyUI B = new BuyUI();
                 B.setVisible(true);
             }
@@ -239,6 +241,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
                 float Cprice = rs.getFloat("AccPrice");
                 OrderAccessories A = new OrderAccessories(001, null, Cprice, 0);
                 Aprice = A.AccPrice;
+                Accid=A.AccID;
                 BuyUI B = new BuyUI();
                 B.setVisible(true);
             }
@@ -261,6 +264,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
                 float Cprice = rs.getFloat("AccPrice");
                 OrderAccessories A = new OrderAccessories(004, null, Cprice, 0);
                 Aprice = A.AccPrice;
+                Accid=A.AccID;
                 BuyUI B = new BuyUI();
                 B.setVisible(true);
             }
@@ -282,6 +286,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
                 float Cprice = rs.getFloat("AccPrice");
                 OrderAccessories A = new OrderAccessories(005, null, Cprice, 0);
                 Aprice = A.AccPrice;
+                Accid=A.AccID;
                 BuyUI B = new BuyUI();
                 B.setVisible(true);
             }
@@ -303,6 +308,7 @@ public class OrderAccessoriesUI extends javax.swing.JFrame {
                 float Cprice = rs.getFloat("AccPrice");
                 OrderAccessories A = new OrderAccessories(006, null, Cprice, 0);
                 Aprice = A.AccPrice;
+                Accid=A.AccID;
                 BuyUI B = new BuyUI();
                 B.setVisible(true);
             }

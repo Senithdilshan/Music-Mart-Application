@@ -12,6 +12,7 @@ import DatabaseLayer.CustomerDatabaseConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -278,6 +279,7 @@ public class BuyUI extends javax.swing.JFrame {
         if (OrderInstrumentUI.InsVal == true) {
             OrderInstrumentUI c = new OrderInstrumentUI();
             c.setVisible(true);
+            OrderInstrumentUI.InsVal = true;
 
         } else {
             OrderAccessoriesUI c = new OrderAccessoriesUI();
@@ -297,7 +299,7 @@ public class BuyUI extends javax.swing.JFrame {
             Connection con = null;
             Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
-
+            
             if (OrderInstrumentUI.InsVal == true) {
 
                 String QS = txtQuantity.getText();
@@ -309,23 +311,23 @@ public class BuyUI extends javax.swing.JFrame {
                 PreparedStatement p1 = con.prepareStatement(query1);
                 p1.execute();
 
-                String query2 = "insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ");";
-                PreparedStatement p2 = con.prepareStatement(query2);
-                p2.executeUpdate();
+//                String query2 = "insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ");";
+                PreparedStatement p2 = con.prepareStatement("insert into inspurchase values(" + idx + "," + Insidval + "," + Qua + "," + Tot + ");");
+                p2.execute();
             } else {
 
                 String QS = txtQuantity.getText();
                 String TS = txtTotal.getText();
-                float Tot = Float.parseFloat(TS);
-                int Qua = Integer.parseInt(QS);
+                float TotA = Float.parseFloat(TS);
+                int QuaA = Integer.parseInt(QS);
 
-                String query1 = "update accessories set AccQuantity =AccQuantity-" + Qua + " where InsID=" + Accidval + "";
-                PreparedStatement p1 = con.prepareStatement(query1);
-                p1.execute();
+                String query5 = "update accessories set AccQuantity =AccQuantity-" + QuaA + " where AccID=" + Accidval + ";";
+                PreparedStatement p5 = con.prepareStatement(query5);
+                p5.execute();
 
-                String query2 = "insert into asspurchase values(" + idx + "," + Accidval + "," + Qua + "," + Tot + ");";
+                String query2 = "insert into asspurchase values(" + idx + "," + Accidval + "," + QuaA + "," + TotA + ");";
                 PreparedStatement p2 = con.prepareStatement(query2);
-                p2.executeUpdate();
+                p2.execute();
 
             }
 
@@ -339,6 +341,7 @@ public class BuyUI extends javax.swing.JFrame {
         } catch (Exception e) {
 
         }
+        JOptionPane.showMessageDialog(rootPane, "Sucessfully Purchased \n Check your Email", "Sucess", 1);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
