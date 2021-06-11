@@ -5,7 +5,13 @@
  */
 package Views;
 // 
+
 import Model.Report;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -18,29 +24,41 @@ public class ViewReport extends javax.swing.JFrame {
      */
     public ViewReport() {
         initComponents();
-        Report r1=new Report();
-        r1.setInstruments();
-        txtInstruments.setText(Double.toString(r1.getInstrument()));
-        r1.setAccessories();
-        txtaccessorires.setText(Double.toString(r1.getAccessories()));
-        r1.setRepairJob();
-        txtRepairJob.setText(Double.toString(r1.getRepaireJob()));
-        r1.Revenue();
-        txtRevenue.setText(Double.toString(r1.getRevenue()));
-        r1.setcost();
-        jLabel21.setText(Double.toString(r1.getcost()));
-        
-        
-        
-        
-        
-        
-        r1.Expenses();
-        txtExpenses.setText(Double.toString(r1.getExpenses()));
-        txtTotal.setText(Double.toString(r1.Total()));
-       
-        
-        
+
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select sum(TotalPrice) from asspurchase";
+            String query1 = "select sum(TotalPrice) from inspurchase";
+            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst1 = con.prepareStatement(query1);
+            ResultSet rs = pst.executeQuery();
+            ResultSet rs1 = pst1.executeQuery();
+            if (rs.next() && rs1.next()) {
+                float TotalIns = rs1.getFloat("sum(TotalPrice)");
+                float TotalAcc = rs.getFloat("sum(TotalPrice)");
+
+                Report r1 = new Report();
+                r1.setInstruments(TotalIns);
+                txtInstruments.setText(Double.toString(r1.getInstrument()));
+                r1.setAccessories(TotalAcc);
+                txtaccessorires.setText(Double.toString(r1.getAccessories()));
+                r1.setRepairJob();
+                txtRepairJob.setText(Double.toString(r1.getRepaireJob()));
+                r1.Revenue();
+                txtRevenue.setText(Double.toString(r1.getRevenue()));
+                r1.setcost();
+                jLabel21.setText(Double.toString(r1.getcost()));
+
+                r1.Expenses();
+                txtExpenses.setText(Double.toString(r1.getExpenses()));
+                txtTotal.setText(Double.toString(r1.Total()));
+            }
+        } catch (Exception e) {
+
+        }
+
     }
 
     /**
@@ -229,7 +247,6 @@ public class ViewReport extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtInstruments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtRevenue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtaccessorires, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtRepairJob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtExpenses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -237,7 +254,8 @@ public class ViewReport extends javax.swing.JFrame {
                                 .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtaccessorires, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(

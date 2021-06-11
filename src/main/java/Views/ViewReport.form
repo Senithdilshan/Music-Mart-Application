@@ -150,7 +150,6 @@
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="txtInstruments" max="32767" attributes="0"/>
                                       <Component id="txtRevenue" max="32767" attributes="0"/>
-                                      <Component id="txtaccessorires" alignment="1" min="-2" pref="12" max="-2" attributes="0"/>
                                       <Component id="txtRepairJob" alignment="1" max="32767" attributes="0"/>
                                       <Component id="txtExpenses" max="32767" attributes="0"/>
                                       <Component id="jLabel26" max="32767" attributes="0"/>
@@ -159,6 +158,7 @@
                                       <Component id="jLabel23" max="32767" attributes="0"/>
                                       <Component id="jLabel22" max="32767" attributes="0"/>
                                       <Component id="jLabel21" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="txtaccessorires" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>

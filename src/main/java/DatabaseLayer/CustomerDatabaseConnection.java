@@ -11,7 +11,7 @@ public class CustomerDatabaseConnection {
     private static CustomerDatabaseConnection instance;
 
     private void InitializeDBSettings() {
-        this.URL = "jdbc:mysql://127.0.0.1:3306/music_mart";
+        this.URL = "jdbc:mysql://127.0.0.01:3306/music_mart";
         this.UserName = "root";
         this.Password = "";
     }
@@ -29,7 +29,7 @@ public class CustomerDatabaseConnection {
         }
     }
 
-    private CustomerDatabaseConnection() {
+    public CustomerDatabaseConnection() {
         try {
             InitializeDBSettings();
             Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver

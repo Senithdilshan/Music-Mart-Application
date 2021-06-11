@@ -58,7 +58,7 @@ public class LoginUI extends javax.swing.JFrame {
         jPanel1.setAlignmentY(0.0F);
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\94716\\Desktop\\JAVA LAB\\OOPLab\\Music-Mart-Application\\UIPic\\logo2.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nimshi Sulakshana\\java applications\\Music-Mart-Application\\UIPic\\logo2.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

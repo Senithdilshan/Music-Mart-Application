@@ -19,17 +19,17 @@ public class Report {
         this.repairjob_price=0.0;
     }
 //need to take the outputs from the database
-    public void setInstruments()
+    public void setInstruments(double instruments_price)
     {
-        instruments_price= 23234;//get the instrument value from the database
+        this.instruments_price=instruments_price;//get the instrument value from the database
     }
     public double getInstrument()
     {
         return instruments_price;
     }
-    public void setAccessories()
+    public void setAccessories(double accessories_price)
     {
-        accessories_price=4332;//get accessories value from the database
+        this.accessories_price=accessories_price;//get accessories value from the database
     }
     public double getAccessories()
     {
