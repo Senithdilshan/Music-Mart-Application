@@ -21,6 +21,7 @@ public class LoginUI extends javax.swing.JFrame {
     }
     
     public static String idn;
+    public static String RName;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -280,12 +281,13 @@ public class LoginUI extends javax.swing.JFrame {
                 Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
                 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
 
-                String query = "select RepID,PASSWORD from repairist where RepID='" + id + "'";
-
+                String query = "select RepID,PASSWORD,Name from repairist where RepID='" + id + "'";
+                
                 PreparedStatement pst = con.prepareStatement(query);
                 ResultSet rs = pst.executeQuery();
-                if (rs.next()) { 
+                while (rs.next()) { 
                     String psw = rs.getString("PASSWORD");
+                    RName=rs.getString("Name");
                     if (psw.equals(pass)) {
                         this.dispose();
                         JOptionPane.showMessageDialog(rootPane, "Login Sucessfully", "Sucess", 1);
