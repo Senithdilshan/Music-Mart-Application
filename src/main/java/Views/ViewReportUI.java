@@ -25,40 +25,25 @@ public class ViewReportUI extends javax.swing.JFrame {
     public ViewReportUI() {
         initComponents();
 
-        try {
-            Connection con = null;
-            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
-            String query = "select sum(TotalPrice) from asspurchase";
-            String query1 = "select sum(TotalPrice) from inspurchase";
-            PreparedStatement pst = con.prepareStatement(query);
-            PreparedStatement pst1 = con.prepareStatement(query1);
-            ResultSet rs = pst.executeQuery();
-            ResultSet rs1 = pst1.executeQuery();
-            if (rs.next() && rs1.next()) {
-                float TotalIns = rs1.getFloat("sum(TotalPrice)");
-                float TotalAcc = rs.getFloat("sum(TotalPrice)");
-
                 Report r1 = new Report();
-                r1.setInstruments(TotalIns);
+                r1.setInstruments();
                 txtInstruments.setText(Double.toString(r1.getInstrument()));
-                r1.setAccessories(TotalAcc);
+                r1.setAccessories();
                 txtaccessorires.setText(Double.toString(r1.getAccessories()));
                 r1.setRepairJob();
                 txtRepairJob.setText(Double.toString(r1.getRepaireJob()));
                 r1.Revenue();
                 txtRevenue.setText(Double.toString(r1.getRevenue()));
-                r1.setcost();
-                jLabel21.setText(Double.toString(r1.getcost()));
-
+                txtcost.setText(Double.toString(r1.getcost()));
+                txtwage.setText(Double.toString(r1.getwage()));
+                txtexpenses.setText(Double.toString(r1.getrent()));
+                txtsupply.setText(Double.toString(r1.getsupply()));
+                txtreparist.setText(Double.toString(r1.getRepairstCost()));
+                txtExpense.setText(Double.toString(r1.getutility()));
                 r1.Expenses();
                 txtExpenses.setText(Double.toString(r1.getExpenses()));
                 txtTotal.setText(Double.toString(r1.Total()));
-            }
-        } catch (Exception e) {
-
-        }
-
+            
     }
 
     /**
@@ -92,14 +77,15 @@ public class ViewReportUI extends javax.swing.JFrame {
         txtaccessorires = new javax.swing.JLabel();
         txtRepairJob = new javax.swing.JLabel();
         txtRevenue = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        txtcost = new javax.swing.JLabel();
+        txtwage = new javax.swing.JLabel();
+        txtexpenses = new javax.swing.JLabel();
+        txtsupply = new javax.swing.JLabel();
+        txtreparist = new javax.swing.JLabel();
+        txtExpense = new javax.swing.JLabel();
         txtExpenses = new javax.swing.JLabel();
         txtTotal = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -178,29 +164,32 @@ public class ViewReportUI extends javax.swing.JFrame {
         txtRevenue.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         txtRevenue.setText("   ");
 
-        jLabel21.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel21.setText("    ");
+        txtcost.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtcost.setText("    ");
 
-        jLabel22.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel22.setText("jLabel22");
+        txtwage.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtwage.setText("jLabel22");
 
-        jLabel23.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel23.setText("jLabel23");
+        txtexpenses.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtexpenses.setText("jLabel23");
 
-        jLabel24.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel24.setText("jLabel24");
+        txtsupply.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtsupply.setText("jLabel24");
 
-        jLabel25.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel25.setText("jLabel25");
+        txtreparist.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtreparist.setText("jLabel25");
 
-        jLabel26.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel26.setText("jLabel26");
+        txtExpense.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtExpense.setText("jLabel26");
 
         txtExpenses.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         txtExpenses.setText("    ");
 
         txtTotal.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtTotal.setText("      ");
+
+        jLabel17.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel17.setText("Price(Rs)");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -218,44 +207,43 @@ public class ViewReportUI extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel16)))))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(295, 295, 295)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(92, 92, 92)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addGap(108, 108, 108))
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel4)))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(89, 89, 89)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel13)
-                                        .addComponent(jLabel14)
-                                        .addComponent(jLabel15))
-                                    .addGap(39, 39, 39)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(108, 108, 108))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15))
+                                .addGap(39, 39, 39)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtInstruments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtRevenue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtRepairJob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtExpenses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtaccessorires, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(txtExpense, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtreparist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtsupply, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtexpenses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtwage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtcost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtaccessorires, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -264,7 +252,9 @@ public class ViewReportUI extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
                 .addGap(13, 13, 13)
-                .addComponent(jLabel3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -286,35 +276,35 @@ public class ViewReportUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
+                    .addComponent(txtcost))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel22))
+                    .addComponent(txtwage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel23))
+                    .addComponent(txtexpenses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel24))
+                    .addComponent(txtsupply))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel25))
+                    .addComponent(txtreparist))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel26))
+                    .addComponent(txtExpense))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtExpenses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(txtTotal))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTotal)
+                    .addComponent(jLabel16))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -438,13 +428,8 @@ public class ViewReportUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -456,11 +441,17 @@ public class ViewReportUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txtExpense;
     private javax.swing.JLabel txtExpenses;
     private javax.swing.JLabel txtInstruments;
     private javax.swing.JLabel txtRepairJob;
     private javax.swing.JLabel txtRevenue;
     private javax.swing.JLabel txtTotal;
     private javax.swing.JLabel txtaccessorires;
+    private javax.swing.JLabel txtcost;
+    private javax.swing.JLabel txtexpenses;
+    private javax.swing.JLabel txtreparist;
+    private javax.swing.JLabel txtsupply;
+    private javax.swing.JLabel txtwage;
     // End of variables declaration//GEN-END:variables
 }

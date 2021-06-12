@@ -1,15 +1,23 @@
 package Model;
 //Nimshi
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.*;
+
 public class Report {
     private double instruments_price;
     private double accessories_price;
     private double repairjob_price;
-    private double cost;
-    private double wage;
-    private double supplies;
-    private double rent;
-    private double utilities;
-    private double revenue;
+    static private double cost=300000;
+    static private double wage=100000;
+    static private double supplies=40000;
+    static private double rent=40000;
+    static private double utilities=10000;
+    static private double repCost=20000;
+    static private double revenue;
     private double expenses;
     
     public Report()
@@ -19,25 +27,69 @@ public class Report {
         this.repairjob_price=0.0;
     }
 //need to take the outputs from the database
-    public void setInstruments(double instruments_price)
+    public void setInstruments()
     {
-        this.instruments_price=instruments_price;//get the instrument value from the database
+      
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "select sum(TotalPrice) from inspurchase where day(PDate) BETWEEN 1 and 30";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float TotalIns = rs.getFloat("sum(TotalPrice)");
+                instruments_price=TotalIns;
+            }
+        }catch(Exception e)
+                    {
+                    
+                    }
     }
     public double getInstrument()
     {
         return instruments_price;
     }
-    public void setAccessories(double accessories_price)
+    public void setAccessories()
     {
-        this.accessories_price=accessories_price;//get accessories value from the database
+         try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "SELECT sum(TotalPrice)from asspurchase where day(PDate) BETWEEN 1 and 30";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float TotalIns = rs.getFloat("sum(TotalPrice)");
+                accessories_price=TotalIns;
+            }
+        }catch(Exception e)
+                    {
+                    
+                    }
     }
+    
     public double getAccessories()
     {
         return accessories_price;
     }
     public void setRepairJob()
     {
-        repairjob_price=343;//get repair job price from database
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");//com.microsoft.sqlserver.jdbc.SQLServerDriver
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/music_mart", "root", "");
+            String query = "SELECT sum(Cost)from jobdetails where day(RepairDoneDate) BETWEEN 1 and 30";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                float TotalIns = rs.getFloat("sum(Cost)");
+                repairjob_price=TotalIns;
+            }
+        }catch(Exception e)
+                    {
+                    
+                    }
     }
     public double getRepaireJob()
     {
@@ -47,13 +99,29 @@ public class Report {
     {
         return revenue-expenses;
     }
-    public void setcost()
-    {
-        cost=434;//get cost from the database (add all the instruments and accessories cost)
-    }
     public double getcost()
     {
         return cost;
+    }
+    public double getwage()
+    {
+        return wage;
+    }
+    public double getRepairstCost()
+    {
+        return repCost;
+    }
+    public double getrent()
+    {
+        return rent;
+    }
+    public double getsupply()
+    {
+        return supplies;
+    }
+    public double getutility()
+    {
+        return utilities;
     }
      public void Expenses()
     {
@@ -72,6 +140,5 @@ public class Report {
     {
         return revenue;
     }
-    
-    
 }
+

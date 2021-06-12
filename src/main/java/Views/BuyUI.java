@@ -337,7 +337,8 @@ public class BuyUI extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 String Cid = rs.getString("CusEmail");
-                SendEmail.SendEmail(Cid);
+                String msg=SendEmail.SendEmail(Cid);
+                System.out.println(msg);
             }
         } catch (Exception e) {
 

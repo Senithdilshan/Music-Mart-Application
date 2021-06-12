@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
 
-    public static void SendEmail(String recepient) throws Exception{
+    public static String SendEmail(String recepient) throws Exception{
         System.out.println("Preparing to send Email");
         Properties props = new Properties();
         props.put("mail.smtp.auth", true);
@@ -33,7 +33,7 @@ public class SendEmail {
         });
         Message message = prepareMessage(session, myAccountEmail,recepient);
         Transport.send(message);
-        System.out.println("Message sent Successfully");
+        return "Message sent Successfully";
     }
 
     public static Message prepareMessage(Session session, String myAccountEmail,String recepient) {
