@@ -81,7 +81,7 @@ public class AssignJobUI extends javax.swing.JFrame {
         txtRole = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 

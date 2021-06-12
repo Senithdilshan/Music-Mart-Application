@@ -18,7 +18,7 @@ public class SendEmail_unit_Test {
     @Test
     public void CheckValue()
     {
-        Assertions.assertEquals("Message sent Successfully","Message sent Successfully");
+        Assertions.assertEquals("Message sent Successfully",mail);
         
     }
     @AfterEach
@@ -28,7 +28,7 @@ public class SendEmail_unit_Test {
         mail=null;
     }
     @AfterAll
-    public void DeleteMail()
+    public static void DeleteMail()
     {
         s1=null;
     }
